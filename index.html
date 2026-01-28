@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Untuk Kamu ❤️</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg,#ffe4e1,#ffc0cb);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #d02090;
+            margin-bottom: 5px;
+        }
+
+        p {
+            margin-bottom: 30px;
+        }
+
+        .container {
+            position: relative;
+            width: 300px;
+            height: 200px;
+        }
+
+        button {
+            padding: 12px 28px;
+            font-size: 18px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        #btnYa {
+            background-color: #ff69b4;
+            color: white;
+        }
+
+        #btnYa:hover {
+            transform: scale(1.1);
+        }
+
+        #btnTidak {
+            background-color: #808080;
+            color: white;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Sayang, kangen aku nggak? 🥺</h1>
+    <p>Jawab jujur ya ❤️</p>
+
+    <div class="container" id="area">
+        <button id="btnYa" onclick="sayang()">MAU BANGET</button>
+        <button id="btnTidak" onmouseover="lari()">NGGAK</button>
+    </div>
+
+    <script>
+        function sayang() {
+            alert("Aku juga kangen banget ❤️\nSemangat ya LDR-nya!\nCepet ketemu yaa 🥺");
+        }
+
+        function lari() {
+            const area = document.getElementById("area");
+            const btn = document.getElementById("btnTidak");
+
+            const maxX = area.clientWidth - btn.offsetWidth;
+            const maxY = area.clientHeight - btn.offsetHeight;
+
+            const x = Math.random() * maxX;
+            const y = Math.random() * maxY;
+
+            btn.style.left = x + "px";
+            btn.style.top = y + "px";
+        }
+    </script>
+
+</body>
+</html>
