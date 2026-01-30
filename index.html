@@ -1,93 +1,57 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Untuk Kamu ❤️</title>
+<script>
+let step = 0;
 
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            background: linear-gradient(135deg,#ffe4e1,#ffc0cb);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
-        }
+const gameTexts = [
+  " Game kecil dulu\nKlik lagi ya",
+  "Hari ini abg dapet apa ya",
+  " Hadiah kecil ",
+];
 
-        h1 {
-            color: #d02090;
-            margin-bottom: 5px;
-        }
+const results = [
+  "senyum tipis + istirahat bentar ",
+  "peluk jarak jauh dari aku ",
+  "energi kecil biar abg kuat hari ini ",
+  "izin capek tanpa ngerasa salah",
+  "pengingat kalo abg ga sendirian"
+];
 
-        p {
-            margin-bottom: 30px;
-        }
+const warmTexts = [
+  "Hai abg aku tau abg lagi nggak enak badan",
+  "Tenggorokan abg lagi sakit, batuk juga ya",
+  "Nggak apa-apa kalo hari ini lebih diam",
+  "Aku tetep di sini, nemenin abg",
+  "Abg nggak perlu bales, cukup baca aja",
+  "Kalo abg capek, istirahat ya",
+  "Aku peduli sama abg, beneran ",
+  "Semoga badan abg pelan-pelan membaik",
+  "Aku selalu doain abg sehat"
+];
 
-        .container {
-            position: relative;
-            width: 300px;
-            height: 200px;
-        }
+function next() {
+  const textEl = document.getElementById("text");
+  const btn = document.querySelector("button");
 
-        button {
-            padding: 12px 28px;
-            font-size: 18px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
+  if (step < gameTexts.length) {
+    textEl.innerText = gameTexts[step];
+  } 
+  else if (step === gameTexts.length) {
+    const randomResult = results[Math.floor(Math.random() * results.length)];
+    textEl.innerText = "Hasilnya:\n\n" + randomResult;
+  } 
+  else {
+    const warmStep = step - gameTexts.length - 1;
 
-        #btnYa {
-            background-color: #ff69b4;
-            color: white;
-        }
-
-        #btnYa:hover {
-            transform: scale(1.1);
-        }
-
-        #btnTidak {
-            background-color: #808080;
-            color: white;
-            position: absolute;
-        }
-    </style>
-</head>
-
-<body>
-
-    <h1>Sayang, kangen aku nggak? 🥺</h1>
-    <p>Jawab jujur ya ❤️</p>
-
-    <div class="container" id="area">
-        <button id="btnYa" onclick="sayang()">MAU BANGET</button>
-        <button id="btnTidak" onmouseover="lari()">NGGAK</button>
-    </div>
-
-    <script>
-        function sayang() {
-            alert("Aku juga kangen banget ❤️\nSemangat ya LDR-nya!\nCepet ketemu yaa 🥺");
-        }
-
-        function lari() {
-            const area = document.getElementById("area");
-            const btn = document.getElementById("btnTidak");
-
-            const maxX = area.clientWidth - btn.offsetWidth;
-            const maxY = area.clientHeight - btn.offsetHeight;
-
-            const x = Math.random() * maxX;
-            const y = Math.random() * maxY;
-
-            btn.style.left = x + "px";
-            btn.style.top = y + "px";
-        }
-    </script>
-
-</body>
-</html>
+    if (warmStep < warmTexts.length) {
+      textEl.innerText = warmTexts[warmStep];
+    } 
+    else if (warmStep === warmTexts.length) {
+      textEl.innerText = "Udah ya sekarang istirahat \nAku ada buat abg.";
+    }
+    else if (warmStep === warmTexts.length + 1) {
+      textEl.innerText = "sayang aku ga?";
+      btn.style.display = "none";
+    }
+  }
+  step++;
+}
+</script>
