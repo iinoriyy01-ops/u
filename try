@@ -1,0 +1,57 @@
+<script>
+let step = 0;
+
+const gameTexts = [
+  "🎮 Game kecil dulu\nKlik lagi ya",
+  "Hari ini abg dapet apa ya…",
+  "✨ Hadiah kecil ✨",
+];
+
+const results = [
+  "senyum tipis + istirahat bentar 😌",
+  "peluk jarak jauh dari aku 🤍",
+  "energi kecil biar abg kuat hari ini 💪",
+  "izin capek tanpa ngerasa salah",
+  "pengingat kalo abg ga sendirian"
+];
+
+const warmTexts = [
+  "Hai abg… aku tau abg lagi nggak enak badan",
+  "Tenggorokan abg lagi sakit, batuk juga ya…",
+  "Nggak apa-apa kalo hari ini lebih diam",
+  "Aku tetep di sini, nemenin abg",
+  "Abg nggak perlu bales, cukup baca aja",
+  "Kalo abg capek, istirahat ya",
+  "Aku peduli sama abg, beneran 🤍",
+  "Semoga badan abg pelan-pelan membaik",
+  "Aku selalu doain abg sehat"
+];
+
+function next() {
+  const textEl = document.getElementById("text");
+  const btn = document.querySelector("button");
+
+  if (step < gameTexts.length) {
+    textEl.innerText = gameTexts[step];
+  } 
+  else if (step === gameTexts.length) {
+    const randomResult = results[Math.floor(Math.random() * results.length)];
+    textEl.innerText = "Hasilnya:\n\n" + randomResult;
+  } 
+  else {
+    const warmStep = step - gameTexts.length - 1;
+
+    if (warmStep < warmTexts.length) {
+      textEl.innerText = warmTexts[warmStep];
+    } 
+    else if (warmStep === warmTexts.length) {
+      textEl.innerText = "Udah ya… sekarang istirahat 🤍\nAku ada buat abg.";
+    }
+    else if (warmStep === warmTexts.length + 1) {
+      textEl.innerText = "sayang aku ga?";
+      btn.style.display = "none";
+    }
+  }
+  step++;
+}
+</script>
